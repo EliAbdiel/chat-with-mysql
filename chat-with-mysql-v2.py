@@ -97,7 +97,7 @@ def get_response(user_query: str, db: SQLDatabase, chat_history: list):
 # --- UI Config ---
 def sidebar_config():
     st.sidebar.markdown("## Settings")
-    st.sidebar.write("This is a simple chat application using MySQL.")
+    st.sidebar.write("This is a simple chat application using MySQL. Connect to the database and start chatting.")
     st.sidebar.text_input("Host", value="localhost", key="Host")
     st.sidebar.text_input("Port", value="3306", key="Port")
     st.sidebar.text_input("User", value="root", key="User")
@@ -135,6 +135,7 @@ def handle_user_query(user_query: str):
             "chat_history": st.session_state.chat_history,
             "question": user_query
         })
+        cleaned_query = sql_query.strip('```sql\n').strip('\n```')
 
         query_result = run_dict_query(
             st.session_state["User"],
@@ -142,14 +143,14 @@ def handle_user_query(user_query: str):
             st.session_state["Host"],
             st.session_state["Port"],
             st.session_state["Database"],
-            sql_query
+            cleaned_query
         )
 
         df = pd.DataFrame(query_result)
         response = get_response(user_query, st.session_state.db, st.session_state.chat_history)
 
         st.markdown("### 🛠️ Generated SQL Query:")
-        st.code(sql_query, language="sql")
+        st.code(cleaned_query, language="sql")
 
         st.markdown("### 🧪 Raw Query Result:")
         st.write(query_result)
