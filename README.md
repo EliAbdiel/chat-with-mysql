@@ -2,6 +2,8 @@
 
 An interactive **Streamlit** application that connects to a **MySQL** database, allowing users to ask questions in natural language and receive both the corresponding **SQL queries** and query results.
 
+![App Screenshot](img/Chat-with-MySQL-05-02-2025_04_31_PM.png)
+
 ---
 
 ## 🚀 Features
@@ -14,9 +16,9 @@ An interactive **Streamlit** application that connects to a **MySQL** database, 
 
 ---
 
-## 🖼️ Screenshot
+## 📽️ Screen Recorder
 
-![App Screenshot](img/chat-with-mysql-05-01-2025_05_16_PM.png)
+https://github.com/user-attachments/assets/0004342f-e133-468a-a89b-997c4e99141f
 
 ---
 
@@ -48,7 +50,7 @@ pip install -r requirements.txt
 3. **Run the application:**
 
 ```bash
-streamlit run chat-with-mysql.py
+streamlit run chat-with-mysql-v2.py
 ```
 
 ---
@@ -81,6 +83,7 @@ mysql-connector-python
 ```
 📁 chat-with-mysql
 ├── chat-with-mysql.py
+├── chat-with-mysql-v2.py
 ├── README.md
 ├── query-samples.txt
 ├── requirements.txt
